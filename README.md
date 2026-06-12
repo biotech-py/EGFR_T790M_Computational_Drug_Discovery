@@ -1,141 +1,264 @@
 # EGFR T790M Computational Drug Discovery
 
-## Project Overview
+## Overview
 
-This project investigates the binding of FDA-approved EGFR inhibitors against the EGFR T790M resistance mutation using computational drug discovery approaches.
+This project investigates the interaction of FDA-approved EGFR inhibitors with the **EGFR T790M resistance mutation**, a major cause of acquired resistance in non-small cell lung cancer (NSCLC).
 
-The study compares four clinically relevant inhibitors:
+Using a computational drug discovery workflow, molecular properties were analyzed, binding pockets were identified, molecular docking was performed, and protein-ligand interactions were visualized to compare inhibitor performance.
 
-- Gefitinib
-- Erlotinib
-- Afatinib
-- Osimertinib
+---
 
-The objective was to identify the inhibitor with the strongest predicted binding affinity toward the EGFR T790M mutant structure.
+## Objective
+
+To evaluate and rank clinically relevant EGFR inhibitors against the EGFR T790M mutant receptor using molecular docking and structural analysis.
 
 ---
 
 ## Target Protein
 
-- Protein: Epidermal Growth Factor Receptor (EGFR)
-- Mutation: T790M
-- PDB ID: 3IKA
+| Property          | Value                                   |
+| ----------------- | --------------------------------------- |
+| Protein           | Epidermal Growth Factor Receptor (EGFR) |
+| Mutation          | T790M                                   |
+| PDB ID            | 3IKA                                    |
+| Disease Relevance | Non-Small Cell Lung Cancer (NSCLC)      |
 
 ---
 
-## Methodology
+## Tested Inhibitors
 
-### Ligand Preparation
+* Gefitinib
+* Erlotinib
+* Afatinib
+* Osimertinib
 
-Ligands were obtained from PubChem and prepared using:
+---
 
-- RDKit
-- Meeko
+## Computational Workflow
 
-### Protein Preparation
+```text
+Protein Retrieval (PDB)
+        ↓
+Protein Preparation
+        ↓
+Ligand Preparation
+        ↓
+Molecular Property Analysis
+        ↓
+Binding Pocket Identification
+        ↓
+AutoDock Vina Docking
+        ↓
+Binding Affinity Ranking
+        ↓
+PyMOL Visualization
+        ↓
+Interaction Analysis
+```
 
-Protein structure preparation included:
+---
 
-- Removal of unnecessary molecules
-- Receptor preparation
-- PDBQT conversion
+## Tools and Libraries
 
-### Molecular Property Analysis
+### Programming
 
-Calculated properties:
+* Python
 
-- Molecular Weight
-- LogP
-- Hydrogen Bond Donors
-- Hydrogen Bond Acceptors
-- Rotatable Bonds
+### Bioinformatics
 
-### Docking
+* BioPython
+* RDKit
 
-Docking was performed using:
+### Molecular Docking
 
-- AutoDock Vina v1.2.7
+* Meeko
+* AutoDock Vina v1.2.7
 
-Binding pocket coordinates:
+### Visualization
 
-X = -11.849
+* PyMOL
 
-Y = 16.897
+### Data Analysis
 
-Z = 31.836
+* Pandas
+* NumPy
+* Matplotlib
 
-Grid Size:
+---
 
-20 × 20 × 20 Å
+# Molecular Property Analysis
+
+The physicochemical properties of the inhibitors were calculated using RDKit.
+
+| Drug        | Molecular Weight (Da) | LogP | H-Bond Donors | H-Bond Acceptors | Rotatable Bonds |
+| ----------- | --------------------- | ---- | ------------- | ---------------- | --------------- |
+| Gefitinib   | 446.91                | 4.28 | 1             | 7                | 8               |
+| Erlotinib   | 393.44                | 3.41 | 1             | 7                | 10              |
+| Afatinib    | 485.95                | 4.39 | 2             | 7                | 8               |
+| Osimertinib | 499.62                | 4.51 | 2             | 7                | 10              |
+
+### Molecular Weight Comparison
+
+![Molecular Weight Comparison](results/images/molecular_weight_comparison.png)
+
+---
+
+# EGFR Inhibitor Structures
+
+Visualization of the molecular structures analyzed in this study.
+
+![EGFR Inhibitor Structures](results/images/egfr_inhibitor_structures.png)
+
+---
+
+# Binding Pocket Analysis
+
+The binding site was identified using the co-crystallized ligand present in the crystal structure.
+
+### Binding Pocket Residues
+
+* LEU718
+* GLY719
+* PHE723
+* VAL726
+* ALA743
+* LYS745
+* MET790
+* GLN791
+* LEU792
+* MET793
+* PRO794
+* PHE795
+* GLY796
+* CYS797
+* ASP800
+* ASN842
+* LEU844
+* THR854
+* ASP855
+
+### Binding Pocket Visualization
+
+![Binding Pocket Residues](results/images/binding_pocket_residues.png)
+
+---
+
+# Molecular Docking
+
+### Docking Parameters
+
+| Parameter        | Value                |
+| ---------------- | -------------------- |
+| Docking Software | AutoDock Vina v1.2.7 |
+| Center X         | -11.849              |
+| Center Y         | 16.897               |
+| Center Z         | 31.836               |
+| Grid Size        | 20 × 20 × 20 Å       |
+| Exhaustiveness   | 8                    |
 
 ---
 
 ## Docking Results
 
-| Drug | Binding Affinity (kcal/mol) |
-|--------|--------|
-| Afatinib | -8.241 |
-| Osimertinib | -8.121 |
-| Gefitinib | -8.103 |
-| Erlotinib | -7.442 |
+| Drug        | Binding Affinity (kcal/mol) |
+| ----------- | --------------------------- |
+| Afatinib    | -8.241                      |
+| Osimertinib | -8.121                      |
+| Gefitinib   | -8.103                      |
+| Erlotinib   | -7.442                      |
 
 ---
 
-## Ranking
+## Docking Ranking
 
 1. Afatinib
 2. Osimertinib
 3. Gefitinib
 4. Erlotinib
 
----
+### Docking Score Comparison
 
-## Key Binding Pocket Residues
-
-- LEU718
-- GLY719
-- VAL726
-- MET790
-- GLN791
-- LEU792
-- MET793
-- PRO794
-- PHE795
-- GLY796
-- CYS797
-- ASP800
-- ASN842
-- LEU844
-- THR854
+![Docking Ranking](results/images/drug_ranking.png)
 
 ---
 
-## Visualization
+# Protein–Ligand Interaction Visualization
 
-PyMOL was used for:
+### Afatinib Bound to EGFR T790M
 
-- Binding pose visualization
-- Pocket residue visualization
-- Mutation highlighting
-- Protein-ligand interaction analysis
+The top-ranked docking pose of Afatinib was visualized using PyMOL.
+
+![Afatinib Binding Pose](results/images/afatinib_binding.png)
 
 ---
 
-## Tools Used
+### Final Binding Pose
 
-- Python
-- RDKit
-- BioPython
-- Pandas
-- Matplotlib
-- Meeko
-- AutoDock Vina
-- PyMOL
+Visualization of the docked Afatinib molecule within the EGFR T790M binding pocket.
+
+![Afatinib Final Pose](results/images/afatinib_final_pose.png)
+
+---
+
+# Key Findings
+
+* Afatinib demonstrated the strongest predicted binding affinity (-8.241 kcal/mol).
+* Osimertinib and Gefitinib showed comparable docking performance.
+* Erlotinib displayed the weakest predicted binding among the tested inhibitors.
+* Multiple interactions were observed near the T790M mutation region.
+* The ATP-binding pocket residues were consistent with known EGFR inhibitor binding sites.
+
+---
+
+# Project Structure
+
+```text
+EGFR_T790M_Computational_Drug_Discovery
+│
+├── data
+│   ├── ligands
+│   └── pdb
+│
+├── notebooks
+│   └── drug_discovery.ipynb
+│
+├── results
+│   ├── docking
+│   ├── images
+│   └── reports
+│
+├── tools
+│
+├── README.md
+├── requirements.txt
+└── .gitignore
+```
+
+---
+
+# Future Improvements
+
+* Molecular Dynamics (MD) simulations
+* MM/PBSA free energy calculations
+* Virtual screening of larger compound libraries
+* Machine Learning-assisted hit prioritization
+* AI-based drug discovery integration
+
+---
+
+# Author
+
+**Nirupam Joarder**
+
+B.Tech Biotechnology Engineering
+National Institute of Technology Rourkela
+
+GitHub: https://github.com/biotech-py
 
 ---
 
 ## Conclusion
 
-Afatinib demonstrated the strongest predicted binding affinity toward EGFR T790M among the tested inhibitors, suggesting favorable interactions within the ATP-binding pocket.
+This project demonstrates a complete computational drug discovery workflow, beginning with protein and ligand preparation and ending with molecular docking, interaction analysis, and structural visualization.
 
-This project demonstrates a complete computational drug discovery workflow from molecular analysis to docking and structural visualization.
+The workflow provides a reproducible framework for evaluating small-molecule inhibitors against clinically relevant cancer targets such as EGFR T790M.
