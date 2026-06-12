@@ -1,0 +1,13 @@
+__pycache__/
+.ipynb_checkpoints/
+
+*.pyc
+*.pyo
+
+.env
+
+.vscode/
+
+*.tmp
+
+results/docking/vina/*.map
