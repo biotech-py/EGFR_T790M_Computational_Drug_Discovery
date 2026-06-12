@@ -194,9 +194,7 @@ The top-ranked docking pose of Afatinib was visualized using PyMOL.
 
 ### Final Binding Pose
 
-Visualization of the docked Afatinib molecule within the EGFR T790M binding pocket.
-
-![Afatinib Final Pose](results/images/afatinib_final_pose.png)
+![Afatinib Binding Pose](results/images/afatinib_publication_pose.png)
 
 ---
 
