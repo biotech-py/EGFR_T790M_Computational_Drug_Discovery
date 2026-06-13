@@ -141,7 +141,7 @@ The binding site was identified using the co-crystallized ligand present in the 
 
 ![Binding Pocket Residues](results/images/binding_pocket_residues.png)
 
----
+--- 
 
 # Molecular Docking
 
